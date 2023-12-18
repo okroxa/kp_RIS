@@ -1,0 +1,16 @@
+{% macro render_item(item) %}
+
+<div style="border-style: solid; border-color: lavender; background-color: lavenderblush; margin: 10px">
+
+     <span>Блюдо: {{ item['Menuname'] }}</span><br>
+    <span>Вес: {{ item['Menuweight'] }}</span>
+    <span style="margin-left: 30px"> Цена: {{ item['Menucost'] }}</span>
+    <div>
+        <form action="" method="post">
+            <input type="submit" value="Удалить" style="background-color: lavender">
+            <input type="hidden" name="idMenu" value="{{ item['idMenu'] }}">
+        </form>
+    </div>
+</div>
+
+{% endmacro %}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказ</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+{% import 'order_utils.html' as utils_ord %}
+<h2 style="margin-left: 20%; margin-top: 10px">Подтверждение заказа</h2>
+<br>
+<div class="container">
+    <div class="row">
+         <div class="col-md-5", style="margin-top: 10px; border-style: none; margin-left: 5%">
+            <h4>Заказ</h4>
+             <div style="border-style: none; background-color: lavenderblush; ">
+              <table style="width: 100%">
+             <thead>
+                <th style="width: 60%">Блюдо</th><th>Цена</th><th style="width: 25%">Количество</th>
+             </thead>
+            {% for item in basket %}
+                <tr>
+            {{ utils_ord.render_item(item, show_form=False, show_but=False) }}
+                </tr>
+             {% endfor %}
+              </table>
+             </div>
+         </div>
+        <div class="col-md-2", style="margin: 10px; margin-left: 30px; margin-top: 45px">
+            <div style="border-style: none; background-color: lavenderblush">
+            {% if waiter %}
+                <b> Заказ принял</b> <br>{{waiter}}
+            {% else %}
+            <b>Нет данных об официантe</b>
+            {% endif %}
+            </div>
+             <div style=" margin-top: 10px; border-style: none; background-color: lavenderblush">
+            {% if date %}
+                 <b > Дата заказа</b> <br>{{date}}
+            {% else %}
+            <b>Нет данных о дате</b>
+            {% endif %}
+             </div>
+        </div>
+        <div class="col-md-2", style="border-style: none; margin: 10px; margin-top: 50px; margin-left: 40px">
+            <div style="background-color: lavenderblush">
+            {% if waiter %}
+            <a href="/ord/approve_order/approve" style="font-size: 20px">Подтвердить заказ</a>
+            {% endif %}
+            <a href="/ord/back" style="font-size: 20px">Отменить заказ</a><br>
+            <a href="/ord/" style="font-size: 20px">Назад</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

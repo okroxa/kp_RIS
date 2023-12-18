@@ -1,0 +1,35 @@
+{% macro render_item(item, show_form=False, show_but=True) %}
+
+     {% if show_but %}
+<div style="border-style: solid; border-color: lavender; background-color: lavenderblush; margin: 10px">
+
+     <span>Блюдо: {{ item['Menuname'] }}</span><br>
+    <span>Цена: {{ item['Menucost'] }}</span><br>
+    {% if show_form %}
+    <div>
+        <form action="" method="post">
+            <input type="submit" value="Добавить в заказ" style="background-color: lavender">
+            <input type="hidden" name="idMenu" value="{{ item['idMenu'] }}">
+        </form>
+    </div>
+
+    {% else %}
+         <span>Количество: {{ item['number'] }}</span>
+    <div>
+        <form action="" method="post">
+            <input type="submit" value="Убрать из заказа" style="background-color: lavender">
+            <input type="hidden" name="idBasket" value="{{ item['idMenu'] }}">
+        </form>
+    </div>
+    {% endif %}
+</div>
+    {% else %}
+    <table style="width: 100%">
+    <tr>
+    <td style="width: 60%">{{ item['Menuname'] }}</td><td>{{ item['Menucost'] }}</td><td style="width: 25%">{{ item['number'] }}</td>
+    </tr>
+    </table>
+
+    {% endif %}
+
+{% endmacro %}

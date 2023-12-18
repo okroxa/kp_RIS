@@ -1,0 +1,18 @@
+{
+  "Waiter": [
+    "auth",
+    "ord"
+  ],
+  "Manager": [
+    "sql",
+    "auth"
+  ],
+  "Boss": [
+    "sql",
+    "auth",
+    "edit"
+  ],
+  "Unauthorised": [
+    "auth"
+  ]
+}
